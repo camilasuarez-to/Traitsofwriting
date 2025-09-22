@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 6 Traits of Writing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles and Reset */
+        :root {
+            --primary-color: #007BFF;
+            --secondary-color: #FFC107;
+            --background-color: #F0F8FF; /* AliceBlue */
+            --card-background: #ffffff;
+            --text-color: #34495E; /* Wet Asphalt */
+            --success-color: #2ECC71; /* Emerald */
+            --error-color: #E74C3C; /* Alizarin */
+            --font-family: 'Poppins', sans-serif;
+            --border-radius: 20px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2.5rem;
+            border: 5px solid white;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: transparent;
+            background: linear-gradient(45deg, #007BFF, #FFC107);
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 50px; /* Pill shape */
+        }
+
+        .nav-btn {
+            font-family: var(--font-family);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            background-color: transparent;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            color: var(--primary-color);
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Pages and Content */
+        .page {
+            display: none;
+            animation: fadeInUp 0.6s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            text-align: center;
+        }
+
+        /* Home Section */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .intro-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .intro-card-emoji {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .intro-card-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        
+        .intro-card:hover .intro-card-title {
+            color: var(--secondary-color);
+        }
+
+
+        /* Study Section */
+        .study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .study-card {
+            background-color: var(--card-background);
+            border: 2px solid #f0f0f0;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .study-card:nth-child(2n) { border-top-color: var(--secondary-color); }
+        .study-card:nth-child(3n) { border-top-color: var(--success-color); }
+        .study-card:nth-child(4n) { border-top-color: #9B59B6; } /* Amethyst */
+        .study-card:nth-child(5n) { border-top-color: #3498DB; } /* Peter River */
+        .study-card:nth-child(6n) { border-top-color: #E67E22; } /* Carrot */
+
+
+        .study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .study-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .study-card .listen-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--secondary-color);
+            transition: transform 0.2s;
+        }
+        .study-card .listen-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .study-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .study-card .example {
+            background-color: #f0f8ff;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-style: italic;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .study-card .tips {
+            list-style: none;
+            padding: 0;
+        }
+
+        .study-card .tips li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #555;
+            background: #f9f9f9;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        /* Practice Section */
+        .practice-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .practice-btn {
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .practice-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Colors for practice buttons */
+        [data-trait="ideas"] { background-color: #FFC107; }
+        [data-trait="organization"] { background-color: #03A9F4; }
+        [data-trait="voice"] { background-color: #9C27B0; }
+        [data-trait="wordChoice"] { background-color: #4CAF50; }
+        [data-trait="sentenceFluency"] { background-color: #2196F3; }
+        [data-trait="conventions"] { background-color: #F44336; }
+
+
+        #practice-activity-container {
+            margin-top: 2rem;
+            padding: 2.5rem;
+            border: 2px dashed var(--primary-color);
+            border-radius: var(--border-radius);
+            background-color: #fdfdff;
+        }
+
+        /* Evaluation Section */
+        .btn-start-eval, .btn-submit-eval, .btn-send-results, .btn-retry-practice {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), #0056b3);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-start-eval:hover, .btn-submit-eval:hover, .btn-send-results:hover, .btn-retry-practice:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+        }
+        
+        /* Additional styles for forms and feedback */
+        .hidden { display: none !important; }
+        #student-form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label { font-weight: 600; margin-bottom: 0.5rem; text-align: left; }
+        .form-group input, .form-group select { padding: 0.8rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 8px; font-family: var(--font-family); }
+        .form-error-message {
+            color: var(--error-color);
+            font-weight: 600;
+            text-align: center;
+            margin-top: 1rem;
+            height: 1.2em;
+        }
+        .options-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+        .options-list button { width: 100%; padding: 1rem; font-size: 1.1rem; text-align: left; background-color: #f1f3f5; border: 2px solid #dee2e6; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .options-list button:hover { background-color: #e9ecef; border-color: var(--primary-color); }
+        .feedback { margin-top: 1.5rem; padding: 1rem; border-radius: 8px; font-weight: 600; }
+        .feedback.correct { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .feedback.incorrect { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        #sortable-list { list-style-type: none; padding: 0; }
+        #sortable-list li { padding: 1rem; margin-bottom: 0.5rem; background-color: #eef7ff; border: 2px solid #bde0fe; border-radius: 8px; cursor: grab; }
+        .dragging { opacity: 0.5; }
+        #eval-results-container { text-align: center; }
+        #eval-results-container h3 { font-size: 2rem; margin-bottom: 1rem; }
+        #eval-results-container p { font-size: 1.5rem; margin-bottom: 2rem; }
+        #score { font-weight: bold; color: var(--success-color); }
+        .btn-send-results[disabled] { background: var(--secondary-color); cursor: not-allowed; }
+        .practice-question { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; text-align: left;}
+        #clickable-sentence span { padding: 5px; border-radius: 5px; margin: 2px; display: inline-block; cursor: pointer; transition: background-color 0.3s;}
+        #clickable-sentence span:hover { background-color: #e0e0e0; }
+        
+        .question-block { 
+            margin-bottom: 2rem; 
+            padding: 1.5rem; 
+            background: #fafafa; 
+            border-radius: 15px; 
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        .question-block.correct {
+            border-left: 8px solid var(--success-color);
+            background-color: #f0fff4;
+        }
+        .question-block.incorrect {
+            border-left: 8px solid var(--error-color);
+            background-color: #fff0f0;
+        }
+        .question-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .question-feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .question-feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .options-list li label { display: block; padding: 1rem; background: #f1f3f5; border-radius: 10px; cursor: pointer; transition: background-color 0.2s;}
+        .options-list li label:hover { background: #e9ecef; }
+        .options-list input[type="radio"] { margin-right: 10px; }
+
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 16px;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            nav {
+                flex-direction: column;
+                border-radius: var(--border-radius);
+                padding: 0.5rem;
+            }
+            .nav-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The 6 Traits of Writing ✍️</h1>
+            <nav>
+                <button id="btn-inicio" class="nav-btn active" aria-current="page">🏠 Home</button>
+                <button id="btn-estudio" class="nav-btn">📚 Study</button>
+                <button id="btn-practica" class="nav-btn">✏️ Practice</button>
+                <button id="btn-evaluacion" class="nav-btn">🏆 Test</button>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <!-- Home Section -->
+            <section id="inicio" class="page active">
+                <h2>Welcome to the writing adventure!</h2>
+                <p>Here you will learn the <strong>six secrets</strong> to make your texts incredible. They are like superpowers for your words.</p>
+                <div class="intro-grid">
+                    <div class="intro-card" data-trait-id="ideas" role="button" tabindex="0">
+                        <div class="intro-card-emoji">💡</div>
+                        <div class="intro-card-title">Ideas</div>
+                    </div>
+                    <div class="intro-card" data-trait-id="organization" role="button" tabindex="0">
+                        <div class="intro-card-emoji">🏛️</div>
+                        <div class="intro-card-title">Organization</div>
+                    </div>
+                    <div class="intro-card" data-trait-id="voice" role="button" tabindex="0">
+                        <div class="intro-card-emoji">🗣️</div>
+                        <div class="intro-card-title">Voice</div>
+                    </div>
+                    <div class="intro-card" data-trait-id="wordChoice" role="button" tabindex="0">
+                        <div class="intro-card-emoji">🎨</div>
+                        <div class="intro-card-title">Word Choice</div>
+                    </div>
+                    <div class="intro-card" data-trait-id="sentenceFluency" role="button" tabindex="0">
+                        <div class="intro-card-emoji">🌊</div>
+                        <div class="intro-card-title">Sentence Fluency</div>
+                    </div>
+                    <div class="intro-card" data-trait-id="conventions" role="button" tabindex="0">
+                        <div class="intro-card-emoji">✅</div>
+                        <div class="intro-card-title">Conventions</div>
+                    </div>
+                </div>
+                <p>Use the tabs above to <strong>Study</strong> each trait, do fun <strong>Practice</strong> activities, and test what you've learned in the final <strong>Test</strong>. Let's get started!</p>
+            </section>
+
+            <!-- Study Section -->
+            <section id="estudio" class="page">
+                <h2>📚 Study Zone</h2>
+                <p>Click on each card to learn about a trait. Use the 🔊 button to listen!</p>
+                <div class="study-grid">
+                    <!-- Study cards will be generated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Practice Section -->
+            <section id="practica" class="page">
+                <h2>✏️ Practice Zone</h2>
+                <p>Time to practice! Choose an activity to begin.</p>
+                <div class="practice-menu">
+                     <!-- Practice menu buttons will be generated by JavaScript -->
+                </div>
+                <div id="practice-activity-container">
+                    <!-- The selected practice activity will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Test Section -->
+            <section id="evaluacion" class="page">
+                <h2>🏆 Final Test</h2>
+                <div id="eval-form-container">
+                    <p>Show what you know! First, please fill in your details.</p>
+                    <form id="student-form">
+                        <div class="form-group">
+                            <label for="nombre">Full Name:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="curso">Grade:</label>
+                            <select id="curso" name="curso" required>
+                                <option value="">Select your grade</option>
+                                <optgroup label="Primary School">
+                                    <option value="1st Grade">1st Grade</option>
+                                    <option value="2nd Grade">2nd Grade</option>
+                                    <option value="3rd Grade">3rd Grade</option>
+                                    <option value="4th Grade">4th Grade</option>
+                                    <option value="5th Grade">5th Grade</option>
+                                </optgroup>
+                                <optgroup label="High School">
+                                    <option value="6th Grade">6th Grade</option>
+                                    <option value="7th Grade">7th Grade</option>
+                                    <option value="8th Grade">8th Grade</option>
+                                    <option value="9th Grade">9th Grade</option>
+                                    <option value="10th Grade">10th Grade</option>
+                                    <option value="11th Grade">11th Grade</option>
+                                    <option value="12th Grade">12th Grade</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="documento">ID Number:</label>
+                            <input type="text" id="documento" name="documento" required>
+                        </div>
+                        <button type="submit" class="btn-start-eval">Start Test</button>
+                        <p id="form-error-message" class="form-error-message"></p>
+                    </form>
+                </div>
+                <div id="eval-quiz-container" class="hidden">
+                    <!-- The test quiz will be generated here -->
+                </div>
+                <div id="eval-results-container" class="hidden">
+                    <!-- The test results will be shown here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Google Apps Script URL (public deployment URL, sin /a/macros/)
+            const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxynvj8M0Q38KmP11GcmmPK_xMEPAzCAWLdeCpi8MykZOTTxJfeov5n1D7-gpBIDdrn/exec";
+
+            // --- NAVIGATION ---
+            const pages = document.querySelectorAll('.page');
+            const navButtons = document.querySelectorAll('.nav-btn');
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetPageId = button.id.replace('btn-', '');
+                    
+                    pages.forEach(page => {
+                        page.classList.toggle('active', page.id === targetPageId);
+                    });
+
+                    navButtons.forEach(btn => {
+                        btn.classList.toggle('active', btn.id === button.id);
+                        btn.setAttribute('aria-current', btn.id === button.id ? 'page' : 'false');
+                    });
+                });
+            });
+
+            // --- HOME SECTION INTERACTIVITY ---
+            const introCards = document.querySelectorAll('.intro-grid .intro-card');
+            const studyNavButton = document.getElementById('btn-estudio');
+
+            introCards.forEach(card => {
+                // Function to handle the navigation
+                const navigateToTrait = () => {
+                    const traitId = card.dataset.traitId;
+                    
+                    // 1. Switch to the Study tab
+                    if (studyNavButton) {
+                        studyNavButton.click();
+                    }
+
+                    // 2. Find the target study card
+                    const targetStudyCard = document.getElementById(`study-${traitId}`);
+
+                    // 3. Scroll to it smoothly
+                    if (targetStudyCard) {
+                        // Use a timeout to ensure the page has switched before scrolling
+                        setTimeout(() => {
+                            targetStudyCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            // Optional: add a temporary highlight effect
+                            targetStudyCard.style.transition = 'all 0.3s';
+                            targetStudyCard.style.boxShadow = '0 0 25px rgba(255, 193, 7, 0.8)';
+                            setTimeout(() => {
+                                targetStudyCard.style.boxShadow = '';
+                            }, 1500);
+                        }, 100); // A small delay is often enough
+                    }
+                };
+
+                // Add click event listener
+                card.addEventListener('click', navigateToTrait);
+
+                // Add keyboard accessibility (Enter key)
+                card.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') {
+                        navigateToTrait();
+                    }
+                });
+            });
+
+            // --- CONTENT DATA ---
+            const studyData = [
+                { id: 'ideas', title: '💡 Ideas', definition: 'The idea is the main message of your writing. It is the heart of the text. It should be clear and supported with interesting details that help the reader imagine.', example: 'Instead of saying "The dog was big," you could write "The dog was as big as a small bear, with paws that made the ground tremble as it walked."', tips: ['Before writing, ask yourself: What is the most important thing I want to say?', 'Use details that can be seen, heard, smelled, touched, or tasted.'] },
+                { id: 'organization', title: '🏛️ Organization', definition: 'This is the skeleton of your text. It orders your ideas logically, with a hook at the beginning, a clear development, and an ending that wraps up the story well.', example: 'A story should have a beginning (introducing characters), a middle (the problem), and an end (the solution).', tips: ['Use words like "first," "then," "meanwhile," and "finally" to guide the reader.', 'Make a small map or outline of your ideas before you start.'] },
+                { id: 'voice', title: '🗣️ Voice', definition: 'Voice is your personality as a writer shining through the text. It\'s what makes your writing sound like you. It can be funny, serious, curious... it depends on what you want to convey!', example: 'Formal text: "Your presence is requested at the event." Text with a friendly voice: "Hey, you can\'t miss the party! It\'s going to be awesome!".', tips: ['Write about things you truly care about. Your passion will show.', 'Read your text aloud. Does it sound like you talking?'] },
+                { id: 'wordChoice', title: '🎨 Word Choice', definition: 'This is about using the exact, powerful words to paint a picture in the reader\'s mind. Avoid boring or repetitive words.', example: 'Instead of "The boy ran fast," try "The boy sprinted swiftly down the sidewalk."', tips: ['Use a thesaurus to find more interesting words.', 'Think of strong verbs (devour instead of eat, whisper instead of say).'] },
+                { id: 'sentenceFluency', title: '🌊 Sentence Fluency', definition: 'This is the rhythm and flow of your sentences. Good writing has sentences of different lengths and that start in different ways. It should sound good when read aloud!', example: 'Bad: "I went to the park. I saw a dog. The dog was playing. I liked it." Good: "When I arrived at the park, I saw a dog playing joyfully with its ball. It was a charming scene!".', tips: ['Read your writing aloud to find parts that sound choppy or awkward.', 'Combine short sentences using words like "and," "but," "because," and "when."'] },
+                { id: 'conventions', title: '✅ Conventions', definition: 'These are the rules of writing: spelling, capitalization, punctuation, and grammar. They help make your text easy for everyone to read and understand.', example: 'Incorrect: "yesterday we went to the park with maria". Correct: "Yesterday, we went to the park with Maria."', tips: ['Use a capital letter at the beginning of a sentence and for proper nouns.', 'Review your text carefully at the end to catch errors.'] }
+            ];
+
+            // --- STUDY ZONE ---
+            const studyGrid = document.querySelector('.study-grid');
+            if (studyGrid) {
+                studyGrid.innerHTML = studyData.map(trait => `
+                    <article class="study-card" id="study-${trait.id}">
+                        <h3>
+                            ${trait.title}
+                            <button class="listen-btn" data-text-to-read="${trait.title}. ${trait.definition}. Example: ${trait.example}" aria-label="Listen to definition of ${trait.title}">🔊</button>
+                        </h3>
+                        <p>${trait.definition}</p>
+                        <div class="example">${trait.example}</div>
+                        <ul class="tips">
+                            <li>✔️ ${trait.tips[0]}</li>
+                            <li>✔️ ${trait.tips[1]}</li>
+                        </ul>
+                    </article>
+                `).join('');
+            }
+
+            // --- WEB SPEECH API (TEXT-TO-SPEECH) ---
+            if ('speechSynthesis' in window) {
+                const synth = window.speechSynthesis;
+                let selectedVoice = null;
+
+                function loadAndSetVoice() {
+                    const voices = synth.getVoices();
+                    const preferredVoices = [
+                        "Google US English",
+                        "Samantha",
+                        "Alex",
+                        "Microsoft Zira Desktop - English (United States)"
+                    ];
+                    
+                    selectedVoice = voices.find(voice => preferredVoices.includes(voice.name) && voice.lang.startsWith('en')) || null;
+                    
+                    if (!selectedVoice) {
+                        selectedVoice = voices.find(voice => voice.lang === 'en-US');
+                    }
+                }
+
+                if (synth.getVoices().length !== 0) {
+                    loadAndSetVoice();
+                } else {
+                    synth.onvoiceschanged = loadAndSetVoice;
+                }
+
+                document.querySelectorAll('.listen-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const textToRead = button.getAttribute('data-text-to-read');
+                        if (synth.speaking) {
+                            synth.cancel();
+                        }
+                        const utterance = new SpeechSynthesisUtterance(textToRead);
+                        utterance.lang = 'en-US';
+                        
+                        if (selectedVoice) {
+                            utterance.voice = selectedVoice;
+                        }
+                        
+                        synth.speak(utterance);
+                    });
+                });
+            } else {
+                document.querySelectorAll('.listen-btn').forEach(button => button.style.display = 'none');
+            }
+
+            // --- PRACTICE ZONE ---
+            const practiceMenu = document.querySelector('.practice-menu');
+            const activityContainer = document.getElementById('practice-activity-container');
+            
+            const practiceActivities = {
+                ideas: {
+                    title: '💡 Ideas',
+                    question: 'Read the following paragraph and choose the sentence that best expresses the main idea:',
+                    context: 'Bees are very important for the planet. They travel from flower to flower collecting nectar, and in doing so, they carry pollen. This process, called pollination, helps plants produce fruits and seeds. Without bees, many of the fruits and vegetables we eat would not exist.',
+                    options: [
+                        { text: 'Bees like nectar from flowers.', correct: false },
+                        { text: 'Bees are crucial for food production thanks to pollination.', correct: true },
+                        { text: 'Pollination is a complicated process.', correct: false }
+                    ],
+                    feedback: 'The main idea summarizes the most important point. The paragraph explains WHY bees are important, which is because of pollination that helps create food.'
+                },
+                organization: {
+                    title: '🏛️ Organization',
+                    question: 'Drag and drop these sentences to create a story with a logical beginning, middle, and end.',
+                    type: 'sort',
+                    items: [
+                        { id: 'org2', text: 'Suddenly, a mischievous squirrel stole his nut and climbed a tree.' },
+                        { id: 'org3', text: 'The sad rabbit learned he should guard his treasures better.' },
+                        { id: 'org1', text: 'Once upon a time, a rabbit found the biggest nut in the forest.' },
+                        { id: 'org4', text: 'The rabbit tried to climb, but the squirrel was faster and ate the nut.' }
+                    ],
+                    correctOrder: ['org1', 'org2', 'org4', 'org3'],
+                    feedback: 'A good story introduces the character (beginning), then presents a problem (middle), and finally tells how it is resolved or ends (end).'
+                },
+                voice: {
+                    title: '🗣️ Voice',
+                    question: 'You want to invite your friends to your birthday party. Which option sounds the most friendly and personal (has the best voice)?',
+                    options: [
+                        { text: 'It is hereby communicated that a festive event will be held on the indicated date.', correct: false },
+                        { text: 'Hey everyone! Are you ready for the best party of the year? Come celebrate my birthday with me, there will be cake and lots of fun!', correct: true },
+                        { text: 'Attendance at the scheduled birthday celebration is mandatory.', correct: false }
+                    ],
+                    feedback: 'The second option uses enthusiastic and direct language, as if you were talking to your friends! That\'s having a good voice.'
+                },
+                wordChoice: {
+                    title: '🎨 Word Choice',
+                    question: 'The sentence "The pizza was good" is a bit simple. What word could you use instead of "good" to make it sound more exciting?',
+                    context: 'The pizza was <strong>good</strong>.',
+                    options: [
+                        { text: 'acceptable', correct: false },
+                        { text: 'edible', correct: false },
+                        { text: 'exquisite', correct: true }
+                    ],
+                    feedback: '"Exquisite" is a much stronger and more precise word. It paints a tastier picture in the reader\'s mind!'
+                },
+                sentenceFluency: {
+                    title: '🌊 Sentence Fluency',
+                    question: 'Here are two short sentences: "The cat slept. It slept on the sofa." What is the best way to combine them to sound more fluent?',
+                    options: [
+                        { text: 'The cat slept on the sofa.', correct: true },
+                        { text: 'The cat, it slept, and on the sofa.', correct: false },
+                        { text: 'On the sofa the cat slept and slept.', correct: false }
+                    ],
+                    feedback: 'Combining the ideas into a single, direct sentence ("The cat slept on the sofa") greatly improves fluency and avoids repetition.'
+                },
+                conventions: {
+                    title: '✅ Conventions',
+                    question: 'The following sentence is missing two capital letters and a period. Click where they should go: "ana\'s dog is named toto"',
+                    type: 'click-correct',
+                    sentence: ["ana's", 'dog', 'is', 'named', 'toto'],
+                    corrections: {
+                        0: "Ana's",
+                        4: 'Toto.'
+                    },
+                    feedback: 'Excellent! Remember to use a capital letter at the beginning of a sentence and for proper nouns (like Ana and Toto), and don\'t forget the period at the end.'
+                }
+            };
+
+            if (practiceMenu) {
+                practiceMenu.innerHTML = Object.keys(practiceActivities).map(key => {
+                    const activity = practiceActivities[key];
+                    return `<button class="practice-btn" data-activity="${key}" data-trait="${key}">${activity.title}</button>`;
+                }).join('');
+
+                practiceMenu.querySelectorAll('.practice-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const activityKey = button.dataset.activity;
+                        loadPracticeActivity(activityKey);
+                    });
+                });
+            }
+
+            function loadPracticeActivity(key) {
+                const activity = practiceActivities[key];
+                let content = `<h3 class="practice-question">${activity.question}</h3>`;
+
+                if (activity.context) {
+                    content += `<p class="practice-context">${activity.context}</p>`;
+                }
+
+                if (activity.type === 'sort') {
+                    content += `<ul id="sortable-list">`;
+                    const shuffledItems = [...activity.items].sort(() => Math.random() - 0.5);
+                    content += shuffledItems.map(item => `<li draggable="true" data-id="${item.id}">${item.text}</li>`).join('');
+                    content += `</ul><button id="check-sort-btn" class="btn-submit-eval">Check Order</button>`;
+                } else if (activity.type === 'click-correct') {
+                    content += `<div id="clickable-sentence" class="practice-context">` +
+                        activity.sentence.map((word, index) => `<span data-index="${index}">${word}</span>`).join(' ') +
+                        `</div>`;
+                } else {
+                    content += `<ul class="options-list">`;
+                    activity.options.forEach((option, index) => {
+                        content += `<li><button data-correct="${option.correct}">${option.text}</button></li>`;
+                    });
+                    content += `</ul>`;
+                }
+                
+                content += `<div class="feedback hidden"></div><button class="btn-retry-practice hidden">Try Again</button>`;
+                activityContainer.innerHTML = content;
+                
+                addPracticeListeners(key);
+            }
+            
+            function addPracticeListeners(key) {
+                const activity = practiceActivities[key];
+                const feedbackEl = activityContainer.querySelector('.feedback');
+                const retryBtn = activityContainer.querySelector('.btn-retry-practice');
+
+                if (activity.type === 'sort') {
+                    const sortableList = document.getElementById('sortable-list');
+                    let draggedItem = null;
+
+                    sortableList.querySelectorAll('li').foreach = null; // (no change, placeholder avoided)
+                    sortableList.querySelectorAll('li').forEach(item => {
+                        item.addEventListener('dragstart', () => {
+                            draggedItem = item;
+                            setTimeout(() => item.classList.add('dragging'), 0);
+                        });
+                        item.addEventListener('dragend', () => {
+                            draggedItem.classList.remove('dragging');
+                        });
+                    });
+
+                    sortableList.addEventListener('dragover', e => {
+                        e.preventDefault();
+                        const afterElement = getDragAfterElement(sortableList, e.clientY);
+                        if (afterElement == null) {
+                            sortableList.appendChild(draggedItem);
+                        } else {
+                            sortableList.insertBefore(draggedItem, afterElement);
+                        }
+                    });
+
+                    document.getElementById('check-sort-btn').addEventListener('click', () => {
+                        const currentOrder = [...sortableList.querySelectorAll('li')].map(item => item.dataset.id);
+                        const isCorrect = JSON.stringify(currentOrder) === JSON.stringify(activity.correctOrder);
+                        showFeedback(isCorrect, activity.feedback);
+                    });
+
+                } else if (activity.type === 'click-correct') {
+                    const sentenceContainer = document.getElementById('clickable-sentence');
+                    let correctedCount = 0;
+                    const totalCorrections = Object.keys(activity.corrections).length;
+
+                    sentenceContainer.querySelectorAll('span').forEach(span => {
+                        span.addEventListener('click', () => {
+                            const index = parseInt(span.dataset.index);
+                            if (activity.corrections[index]) {
+                                if(span.textContent !== activity.corrections[index]) {
+                                    span.textContent = activity.corrections[index];
+                                    span.style.color = 'var(--success-color)';
+                                    span.style.fontWeight = 'bold';
+                                    correctedCount++;
+                                }
+                                if (correctedCount === totalCorrections) {
+                                   showFeedback(true, activity.feedback);
+                                }
+                            } else {
+                                span.style.color = 'var(--error-color)';
+                                setTimeout(() => span.style.color = '', 1000);
+                            }
+                        });
+                    });
+
+                } else {
+                    activityContainer.querySelectorAll('.options-list button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            const isCorrect = button.dataset.correct === 'true';
+                            showFeedback(isCorrect, activity.feedback);
+                        });
+                    });
+                }
+                
+                function showFeedback(isCorrect, feedbackText) {
+                    feedbackEl.textContent = feedbackText;
+                    feedbackEl.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    retryBtn.classList.remove('hidden');
+                }
+
+                retryBtn.addEventListener('click', () => loadPracticeActivity(key));
+            }
+            
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll('li:not(.dragging)')];
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+
+            // --- TEST ZONE ---
+            const evalQuestions = [
+                { q: "What is the 'heart' or main message of a text?", a: "The idea", o: ["The voice", "The idea", "The fluency"], feedback: "Correct! The 'Idea' is the central message or theme of the entire piece." },
+                { q: "Arranging a story with a beginning, middle, and end corresponds to the trait of...", a: "Organization", o: ["Organization", "Conventions", "Voice"], feedback: "That's right! Organization is all about the structure and order of your writing." },
+                { q: "True or False: 'Voice' in writing means always using a very formal and serious tone.", a: "False", o: ["True", "False"], feedback: "Correct! Voice is your unique personality, which can be funny, sad, or serious depending on the topic." },
+                { q: "Instead of saying 'The ice cream was good,' which word would be a better choice?", a: "Delicious", o: ["Okay", "Delicious", "Edible"], feedback: "Yes! 'Delicious' is a much more precise and powerful word (Word Choice) than 'good'." },
+                { q: "Combining 'The girl laughs. The girl plays.' into 'The girl laughs and plays.' improves...", a: "Sentence Fluency", o: ["Word Choice", "Sentence Fluency", "Organization"], feedback: "Perfect! Sentence Fluency is about making sentences flow smoothly together." },
+                { q: "Putting a period at the end of a sentence is part of...", a: "Conventions", o: ["Ideas", "Voice", "Conventions"], feedback: "Exactly! Conventions are the rules of writing, like punctuation and spelling." },
+                { q: "True or False: Using only very short sentences makes a text more fluent.", a: "False", o: ["True", "False"], feedback: "Right! Good Sentence Fluency comes from using a mix of long and short sentences." },
+                { q: "Which trait refers to your personality as a writer?", a: "Voice", o: ["Voice", "Organization", "Ideas"], feedback: "You got it! Voice is what makes your writing sound uniquely like you." },
+                { q: "The sentence 'yesterday we visited the louvre museum in paris' needs to correct...", a: "Capitals and period", o: ["Only the period", "The spelling", "Capitals and period"], feedback: "Correct! Conventions require capitals for the start of a sentence and for proper nouns (Louvre, Paris), plus a period." },
+                { q: "Making an outline before writing mainly helps with...", a: "Organization", o: ["Organization", "Voice", "Conventions"], feedback: "That's it! An outline is a key tool for good Organization, helping you plan the structure." }
+            ];
+
+            const studentForm = document.getElementById('student-form');
+            const evalFormContainer = document.getElementById('eval-form-container');
+            const evalQuizContainer = document.getElementById('eval-quiz-container');
+            const evalResultsContainer = document.getElementById('eval-results-container');
+            let studentData = {};
+            let startTime;
+            let shuffledQuestions; // Store shuffled questions to access feedback later
+
+            studentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formError = document.getElementById('form-error-message');
+                formError.textContent = ''; // Clear previous errors
+
+                const studentId = document.getElementById('documento').value;
+                let submittedIds = JSON.parse(localStorage.getItem('submittedIds')) || [];
+
+                // Check if the ID has already been submitted
+                if (submittedIds.includes(studentId)) {
+                    formError.textContent = 'This ID number has already been used to submit a test.';
+                    return; // Stop the submission
+                }
+
+                studentData = {
+                    nombre: document.getElementById('nombre').value,
+                    curso: document.getElementById('curso').value,
+                    documento: studentId,
+                };
+                localStorage.setItem('studentName', studentData.nombre);
+                localStorage.setItem('studentCourse', studentData.curso);
+                
+                startEvaluation();
+            });
+            
+            if(localStorage.getItem('studentName')) {
+                document.getElementById('nombre').value = localStorage.getItem('studentName');
+            }
+            if(localStorage.getItem('studentCourse')) {
+                document.getElementById('curso').value = localStorage.getItem('studentCourse');
+            }
+
+
+            function startEvaluation() {
+                evalFormContainer.classList.add('hidden');
+                evalQuizContainer.classList.remove('hidden');
+                evalResultsContainer.classList.add('hidden'); // Hide previous results
+                evalResultsContainer.innerHTML = ''; // Clear previous results
+                startTime = new Date();
+
+                let quizHTML = `<h3>Final Quiz</h3><form id="quiz-form">`;
+                shuffledQuestions = [...evalQuestions].sort(() => Math.random() - 0.5);
+                
+                shuffledQuestions.forEach((item, index) => {
+                    quizHTML += `<div class="question-block" data-question-index="${index}">
+                        <p class="practice-question">${index + 1}. ${item.q}</p>
+                        <ul class="options-list">`;
+                    const shuffledOptions = [...item.o].sort(() => Math.random() - 0.5);
+                    shuffledOptions.forEach(option => {
+                        quizHTML += `<li><label><input type="radio" name="q${index}" value="${option}" required> ${option}</label></li>`;
+                    });
+                    quizHTML += `</ul></div>`;
+                });
+                quizHTML += `<button type="submit" class="btn-submit-eval">Finish & See Results</button></form>`;
+                evalQuizContainer.innerHTML = quizHTML;
+
+                document.getElementById('quiz-form').addEventListener('submit', showResults);
+            }
+
+            function showResults(e) {
+                e.preventDefault();
+                const endTime = new Date();
+                const duration = endTime - startTime;
+                
+                const formData = new FormData(e.target);
+                let score = 0;
+
+                const questionBlocks = document.querySelectorAll('.question-block');
+                
+                questionBlocks.forEach((block, index) => {
+                    const originalQuestionIndex = parseInt(block.dataset.questionIndex);
+                    const questionData = shuffledQuestions[originalQuestionIndex];
+                    const userAnswer = formData.get(`q${index}`);
+                    
+                    const isCorrect = userAnswer === questionData.a;
+                    
+                    if (isCorrect) {
+                        score++;
+                        block.classList.add('correct');
+                        const feedbackDiv = document.createElement('div');
+                        feedbackDiv.className = 'question-feedback correct';
+                        feedbackDiv.innerHTML = `<strong>✔ Correct!</strong> ${questionData.feedback}`;
+                        block.appendChild(feedbackDiv);
+                    } else {
+                        block.classList.add('incorrect');
+                        const feedbackDiv = document.createElement('div');
+                        feedbackDiv.className = 'question-feedback incorrect';
+                        feedbackDiv.innerHTML = `<strong>✖ Incorrect.</strong> The correct answer is "<strong>${questionData.a}</strong>".<br>${questionData.feedback}`;
+                        block.appendChild(feedbackDiv);
+                    }
+
+                    // Disable radio buttons after checking
+                    block.querySelectorAll('input[type="radio"]').forEach(radio => {
+                        radio.disabled = true;
+                    });
+                });
+
+                // Hide submit button
+                e.target.querySelector('.btn-submit-eval').classList.add('hidden');
+                
+                studentData.aciertos = score;
+                studentData.porcentaje = Math.round((score / evalQuestions.length) * 100);
+                studentData.duracion_ms = duration;
+                
+                // Add the ID to the submitted list only after successful submission
+                let submittedIds = JSON.parse(localStorage.getItem('submittedIds')) || [];
+                if (!submittedIds.includes(studentData.documento)) {
+                    submittedIds.push(studentData.documento);
+                    localStorage.setItem('submittedIds', JSON.stringify(submittedIds));
+                }
+
+                // Show final score and send button
+                evalResultsContainer.classList.remove('hidden');
+                evalResultsContainer.innerHTML = `
+                    <h3>Final Score!</h3>
+                    <p>You answered <span id="score">${score} out of ${evalQuestions.length}</span> questions correctly.</p>
+                    <p>Your score is: <strong>${studentData.porcentaje}%</strong></p>
+                    <button id="send-results-btn" class="btn-send-results">Send My Results</button>
+                    <p id="send-status"></p>
+                `;
+
+                document.getElementById('send-results-btn').addEventListener('click', sendResultsToSheet);
+            }
+            
+            async function sendResultsToSheet() {
+                const sendButton = document.getElementById('send-results-btn');
+                const statusEl = document.getElementById('send-status');
+
+                if (!APPS_SCRIPT_URL) {
+                    statusEl.textContent = "Error: The spreadsheet URL is not configured.";
+                    statusEl.style.color = 'var(--error-color)';
+                    return;
+                }
+
+                sendButton.disabled = true;
+                sendButton.textContent = 'Sending...';
+                statusEl.textContent = '';
+
+                const dataToSend = {
+                    timestamp: new Date().toLocaleString('en-US'),
+                    nombre: studentData.nombre,
+                    curso: studentData.curso,
+                    documento: studentData.documento,
+                    aciertos: studentData.aciertos,
+                    porcentaje: studentData.porcentaje,
+                    duracion_ms: studentData.duracion_ms
+                };
+
+                try {
+                    const response = await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        // 🔴 Quitado el bloque headers para evitar preflight
+                        body: JSON.stringify(dataToSend),
+                        redirect: 'follow',
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+
+                    if (result.result === 'success') {
+                        statusEl.textContent = 'Results sent successfully!';
+                        statusEl.style.color = 'var(--success-color)';
+                        sendButton.textContent = 'Sent ✔️';
+                    } else {
+                        throw new Error(result.message || 'Unknown error from script');
+                    }
+
+                } catch (error) {
+                    console.error('Error sending data:', error);
+                    statusEl.textContent = `Error sending. Please try again. (${error.message})`;
+                    statusEl.style.color = 'var(--error-color)';
+                    sendButton.disabled = false;
+                    sendButton.textContent = 'Send My Results';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
